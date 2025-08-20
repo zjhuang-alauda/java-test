@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: test32
+  name: test32
+  namespace: appppp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: test32
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: test32
+    spec:
+      containers:
+      - image: 10.0.47.14:31104/library/java-demo:v4
+        name: test32
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    run: test32
+  name: test32
+  namespace: appppp
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    run: test32
+status:
+  loadBalancer: {}
+
